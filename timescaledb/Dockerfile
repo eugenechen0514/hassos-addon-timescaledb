@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base/aarch64:17.2.1
+ARG BUILD_FROM=ghcr.io/hassio-addons/base/aarch64:18.1.1
 ARG BUILD_ARCH=aarch64
 
 ARG ALPINE_VERSION=3.21
