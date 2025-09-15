@@ -258,6 +258,19 @@ COPY --from=pgvector-pg17 --link /usr/local/share/postgresql/extension/vector* /
 # Copy timescaledb-tools
 COPY --from=timescaledb-tools /go/bin/* /usr/local/bin/
 
+# --------------------------------------------
+# Extension pgvector
+# --------------------------------------------
+RUN apk add git build-base postgresql-dev
+
+# 2. cone pgvector source code
+RUN git clone --branch v0.5.1 https://github.com/pgvector/pgvector.git
+RUN cd pgvector
+
+# 3. compile pgvector
+RUN make
+RUN make install
+
 ###########################################
 # Finalize Image
 ###########################################
