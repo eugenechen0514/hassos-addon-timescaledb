@@ -263,13 +263,11 @@ COPY --from=timescaledb-tools /go/bin/* /usr/local/bin/
 # --------------------------------------------
 RUN apk add git build-base postgresql-dev
 
-# 2. cone pgvector source code
-RUN git clone --branch v0.5.1 https://github.com/pgvector/pgvector.git
-RUN cd pgvector
-
-# 3. compile pgvector
-RUN make
-RUN make install
+# 2. clone and compile pgvector
+RUN git clone --branch v0.5.1 https://github.com/pgvector/pgvector.git && \
+    cd pgvector && \
+    make && \
+    make install
 
 ###########################################
 # Finalize Image
